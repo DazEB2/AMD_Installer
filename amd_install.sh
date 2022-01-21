@@ -41,12 +41,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	fi
 	cd amdgpu-pro-$version
     apt-get -f install
-    ./amdgpu-pro-install --opencl=legacy -y
+    ./amdgpu-pro-install -y --opencl=pal,legacy,rocm --headless
     dpkg -l amdgpu-pro
     exit
 fi
 
 tar -Jxvf amdgpu-pro-$version.tar.xz
 cd amdgpu-pro-$version
-./amdgpu-pro-install -y
-dpkg -l amdgpu-pro
+./amdgpu-pro-install -y --opencl=pal,legacy,rocm --headless
